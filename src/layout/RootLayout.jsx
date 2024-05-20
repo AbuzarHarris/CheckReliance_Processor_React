@@ -7,7 +7,6 @@ const RootLayout = () => {
     <>
       <div>
         <Sidebar />
-
         <div className="px-2 mt-2">
           <Outlet />
         </div>
