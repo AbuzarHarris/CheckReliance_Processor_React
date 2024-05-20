@@ -3,6 +3,8 @@ import { Menubar } from "primereact/menubar"
 import { ThemeSwitcherComponent } from "../components"
 import { Button } from "primereact/button"
 import { Avatar } from "primereact/avatar"
+import { useLocation } from "react-router-dom"
+import { routesWithFormTitles } from "../utils/enums"
 
 export default function MenubarComponent({ showSidebar }) {
   const endContent = (
@@ -13,7 +15,7 @@ export default function MenubarComponent({ showSidebar }) {
         <div className="hover:cursor-pointer hover:bg-gray-100 p-2 rounded">
           <span className="">ADMINISTRATOR</span>
         </div>
-        <Button label="Logout" severity="danger" />
+        {/* <Button label="Logout" severity="danger" /> */}
       </div>
     </>
   )
@@ -25,7 +27,7 @@ export default function MenubarComponent({ showSidebar }) {
           className="pi pi-align-left hover:cursor-pointer"
           onClick={showSidebar}
         ></i>
-        <p className="p-0 m-0 font-bold text-xl">Check Transaction</p>
+        <CurrentPageTitle />
       </div>
     </>
   )
@@ -50,5 +52,16 @@ export default function MenubarComponent({ showSidebar }) {
         }}
       />
     </div>
+  )
+}
+
+const CurrentPageTitle = () => {
+  const { pathname } = useLocation()
+  return (
+    <>
+      <p className="p-0 m-0 font-bold text-xl">
+        {pathname === "/" ? "Home" : routesWithFormTitles[pathname]}
+      </p>
+    </>
   )
 }

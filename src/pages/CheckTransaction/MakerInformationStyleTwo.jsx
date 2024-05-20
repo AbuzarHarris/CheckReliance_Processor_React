@@ -76,13 +76,6 @@ export default function MakerInformationStyleTwo() {
           <div
             className={`col-span-12 lg:col-span-6 xl:col-span-6 md:col-span-6 `}
           >
-            {/* <div className="flex gap-2 items-center">
-                <ArrowRightLeft />
-                <span className="text-xl font-semibold">
-                  Transaction Information
-                </span>
-              </div> 
-              <hr className="my-1" /> */}
             <FormRow className="">
               <FormColumn className="col-span-12 lg:col-span-2 xl:col-span-2 md:col-span-12">
                 <FormLabel>Transaction ID</FormLabel>
@@ -623,30 +616,6 @@ export default function MakerInformationStyleTwo() {
                     </div>
                   </div>
                 </FormColumn>
-                {/* <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12 text-center">
-                  <div className="flex items-center w-full justify-center gap-2">
-                    <Button
-                      label="Front"
-                      type="button"
-                      severity="secondary"
-                      pt={{
-                        root: {
-                          className: "px-2 py-1",
-                        },
-                      }}
-                    />
-                    <Button
-                      label="Back"
-                      type="button"
-                      severity="secondary"
-                      pt={{
-                        root: {
-                          className: "px-2 py-1",
-                        },
-                      }}
-                    />
-                  </div>
-                </FormColumn> */}
               </FormRow>
             </div>
           </FormColumn>
@@ -673,27 +642,24 @@ export default function MakerInformationStyleTwo() {
           </FormColumn>
         </FormRow>
         <div className="bg-white rounded-md p-2 flex gap-2 items-center flex-wrap">
-          <Button label="Approve" severity="success" />
-          <Button label="Decline" severity="danger" />
-          <Button label="Hold" severity="warning" />
-          <Button label="Release" severity="secondary" />
-          <Button label="Send For Review" severity="help" />
-          <Button label="View Notes By Store" severity="info" />
-          <Button label="View Maker Transactions" severity="info" />
-          <Button label="Update Maker" severity="info" />
-          <Button label="Matched Maker" severity="info" />
-          <Button label="Matched Customer" severity="info" />
+          <Button type="button" label="Approve" severity="success" />
+          <Button type="button" label="Decline" severity="danger" />
+          <Button type="button" label="Hold" severity="warning" />
+          <Button type="button" label="Release" severity="secondary" />
+          <Button type="button" label="Send For Review" severity="help" />
+          <Button type="button" label="View Notes By Store" severity="info" />
+          <Button
+            type="button"
+            label="View Maker Transactions"
+            severity="info"
+          />
+          <Button type="button" label="Update Maker" severity="info" />
+          <Button type="button" label="Matched Maker" severity="info" />
+          <Button type="button" label="Matched Customer" severity="info" />
           <FormProvider {...method}>
             <MakerModalCompoent />
           </FormProvider>
         </div>
-        {/* 
-        <FormRow>
-          <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
-            <ButtonGroups />
-            <SplitButtons />
-          </FormColumn>
-        </FormRow> */}
       </form>
     </>
   )
@@ -710,6 +676,7 @@ const MakerModalCompoent = () => {
         label="Comments"
         text
         severity="info"
+        type="button"
         onClick={() => setVisible(true)}
       />
       <FormProvider {...method}>{render}</FormProvider>

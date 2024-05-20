@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { Dialog } from "primereact/dialog"
 import { Controller, useFormContext } from "react-hook-form"
-import { TextAreaField } from "../../components"
-import { FormColumn, FormRow } from "../../components/LayoutComonents"
 import { classNames } from "primereact/utils"
 import { Button } from "primereact/button"
 
@@ -97,7 +95,7 @@ const useMakerNotesModal = () => {
       FullName: "asdf",
     },
   ]
-
+  console.log(visible)
   const FooterComponet = () => {
     return (
       <>
