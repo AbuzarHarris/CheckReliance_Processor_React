@@ -1,0 +1,42 @@
+body {
+  background: #eff0f1;
+}
+
+.c-home-section {
+    position: relative;
+    height: 100vh;
+    left: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.5s ease;
+  }
+  .c-sidebar.c-close ~ .c-home-section {
+    left: 78px;
+    width: calc(100% - 80px);
+  }
+  .c-home-section .c-home-content {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+  }
+  .c-home-section .c-home-content .bx-menu,
+  .c-home-section .c-home-content .c-text {
+    color: #11101d;
+    font-size: 35px;
+  }
+  .c-home-section .c-home-content .bx-menu {
+    margin: 0 15px;
+    cursor: pointer;
+  }
+  .c-home-section .c-home-content .c-text {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .unresize-textarea {
+    resize: none;
+  }
+  
+  .unresize-textarea::-webkit-scrollbar {
+    display: none;
+  }

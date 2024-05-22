@@ -10,10 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.36.2",
+    "axios": "^1.6.8",
+    "lucide-react": "^0.378.0",
+    "prettier": "^3.2.5",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.6.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.4",
+    "react-router-dom": "^6.23.1",
+    "react-toastify": "^10.0.5",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
