@@ -48,6 +48,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"TransactionID"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -68,6 +69,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"TransactionID"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -78,6 +80,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"TransactionID"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -124,6 +127,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"AccountNumber"}
                     focusOptions={() => method.setFocus("BankName")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -246,6 +250,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"RoutingNumber"}
                     focusOptions={() => method.setFocus("AccountNumber")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -256,6 +261,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"AccountNumber"}
                     focusOptions={() => method.setFocus("BankName")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -266,6 +272,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"BankName"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -278,6 +285,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"RoutingNumber"}
                     focusOptions={() => method.setFocus("AccountNumber")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -288,6 +296,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"AccountNumber"}
                     focusOptions={() => method.setFocus("BankName")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>
@@ -298,6 +307,7 @@ export default function CustomerInformation() {
                     control={method.control}
                     name={"BankName"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
+                    readonly={true}
                   />
                 </div>
               </FormColumn>

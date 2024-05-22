@@ -13,8 +13,8 @@ import {
 import { ArrowRightLeft, Banknote } from "lucide-react"
 import { Image } from "primereact/image"
 import { TabMenu } from "primereact/tabmenu"
-import MakerInformationStyleTwo from "./MakerInformationStyleTwo"
-import { useSearchParams } from "react-router-dom"
+import MakerInformation from "./MakerInformation"
+import { useParams, useSearchParams } from "react-router-dom"
 import CustomerInformation from "./CustomerInformation"
 import ReturnedChecks from "./ReturnedChecks"
 
@@ -26,6 +26,7 @@ const FORMS_KEYS = [
 ]
 
 const CheckTransaction = () => {
+  const { TransactionID } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const queryParams = new URLSearchParams(searchParams)
   const tab = queryParams.get("activeTab")
@@ -68,7 +69,7 @@ const CheckTransaction = () => {
       case FORMS_KEYS[1]:
         return <CustomerInformation />
       case FORMS_KEYS[2]:
-        return <MakerInformationStyleTwo />
+        return <MakerInformation />
       case FORMS_KEYS[3]:
         return <ReturnedChecks />
       default:
@@ -94,27 +95,28 @@ export default CheckTransaction
 function TransactionInformation() {
   const method = useForm({
     defaultValues: {
-      TransactionID: "",
-      TransactionDateTime: new Date(),
-      StoreID: "",
-      StoreName: "",
-      RoutingNumber: "",
-      AccountNumber: "",
-      BankName: "",
-      CheckNumber: "",
-      CheckAmount: 0,
-      FeePercentage: null,
-      FeeAmount: 0,
-      CardReplacement: 0,
-      TransactionFee: 0,
-      AmountPaid: 0,
-      CheckType: null,
+      Transaction_ID: "",
+      Transaction_Date: new Date(),
+      Store_ID: "",
+      Store_Name: "",
+      Routing_Number: "",
+      Account_Number: "",
+      Bank_Name: "",
+      Check_Number: "",
+      Check_Amount: 0,
+      Fee_Percentage: null,
+      Processing_Fee: 0,
+      Loyalty_Card_Fee: 0,
+      Transaction_Fee: 0,
+      Amount_Paid: 0,
+      Check_Type: null,
       CheckDate: new Date(),
-      ProcessedBy: "",
-      ProcessingStatus: "",
+      Check_Date: "",
+      Processed_By_UserId: "",
+      Processing_Status: "",
       Guarantee: null,
-      PendingReason: "",
-      TransactionNotes: "",
+      Pending_Reason: "",
+      Transaction_Notes: "",
     },
   })
   const shadow = "bg-white mb-3 rounded-xl"
@@ -137,10 +139,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"TransactionID"}
-                      focusOptions={() =>
-                        method.setFocus("TransactionDateTime")
-                      }
+                      name={"Transaction_ID"}
+                      focusOptions={() => method.setFocus("Transaction_Date")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -149,7 +150,7 @@ function TransactionInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name="TransactionDateTime"
+                      name="Transaction_Date"
                       showTime={true}
                     />
                   </div>
@@ -161,8 +162,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"StoreID"}
-                      focusOptions={() => method.setFocus("StoreName")}
+                      name={"Store_ID"}
+                      focusOptions={() => method.setFocus("Store_Name")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -171,8 +173,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"StoreName"}
-                      focusOptions={() => method.setFocus("RoutingNumber")}
+                      name={"Store_Name"}
+                      focusOptions={() => method.setFocus("Routing_Number")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -183,8 +186,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"RoutingNumber"}
-                      focusOptions={() => method.setFocus("AccountNumber")}
+                      name={"Routing_Number"}
+                      focusOptions={() => method.setFocus("Account_Number")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -193,8 +197,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"AccountNumber"}
-                      focusOptions={() => method.setFocus("BankName")}
+                      name={"Account_Number"}
+                      focusOptions={() => method.setFocus("Bank_Name")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -203,10 +208,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"BankName"}
-                      focusOptions={() =>
-                        method.setFocus("TransactionDateTime")
-                      }
+                      name={"Bank_Name"}
+                      focusOptions={() => method.setFocus("Check_Number")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -227,8 +231,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CheckNumber"}
-                      focusOptions={() => method.setFocus("CheckAmount")}
+                      name={"Check_Number"}
+                      focusOptions={() => method.setFocus("Check_Amount")}
                     />
                   </div>
                 </FormColumn>
@@ -237,8 +241,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CheckAmount"}
-                      focusOptions={() => method.setFocus("FeePercentage")}
+                      name={"Check_Amount"}
+                      focusOptions={() => method.setFocus("Fee_Percentage")}
                     />
                   </div>
                 </FormColumn>
@@ -247,8 +251,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"FeePercentage"}
-                      focusOptions={() => method.setFocus("FeeAmount")}
+                      name={"Fee_Percentage"}
+                      focusOptions={() => method.setFocus("Processing_Fee")}
                     />
                   </div>
                 </FormColumn>
@@ -257,10 +261,11 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"FeeAmount"}
+                      name={"Processing_Fee"}
                       focusOptions={() =>
                         method.setFocus("TransactionDateTime")
                       }
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -271,8 +276,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"Loyalty_Card_Fee"}
+                      focusOptions={() => method.setFocus("Transaction_Fee")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -281,8 +287,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"TransactionFee"}
-                      focusOptions={() => method.setFocus("AmountPaid")}
+                      name={"Transaction_Fee"}
+                      focusOptions={() => method.setFocus("Amount_Paid")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -291,10 +298,11 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"AmountPaid"}
+                      name={"Amount_Paid"}
                       focusOptions={() =>
                         method.setFocus("TransactionDateTime")
                       }
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -305,7 +313,7 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
+                      name={"Loyalty_Card_Fee"}
                       focusOptions={() => method.setFocus("TransactionFee")}
                     />
                   </div>
@@ -315,7 +323,10 @@ function TransactionInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name={"TransactionFee"}
+                      name={"Check_Date"}
+                      focusOptions={() =>
+                        method.setFocus("Processed_By_UserId")
+                      }
                     />
                   </div>
                 </FormColumn>
@@ -326,8 +337,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"ProcessedBy"}
-                      focusOptions={() => method.setFocus("ProcessingStatus")}
+                      name={"Processed_By_UserId"}
+                      focusOptions={() => method.setFocus("Processing_Status")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -336,8 +348,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"ProcessingStatus"}
+                      name={"Processing_Status"}
                       focusOptions={() => method.setFocus("Guarantee")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -349,7 +362,8 @@ function TransactionInformation() {
                     <TextInputField
                       control={method.control}
                       name={"Guarantee"}
-                      focusOptions={() => method.setFocus("PendingReason")}
+                      focusOptions={() => method.setFocus("Pending_Reason")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -358,8 +372,9 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"PendingReason"}
-                      focusOptions={() => method.setFocus("TransactionNotes")}
+                      name={"Pending_Reason"}
+                      focusOptions={() => method.setFocus("Transaction_Notes")}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -370,7 +385,7 @@ function TransactionInformation() {
                   <div>
                     <TextAreaField
                       control={method.control}
-                      name={"TransactionNotes"}
+                      name={"Transaction_Notes"}
                       rows={3}
                     />
                   </div>
@@ -401,8 +416,9 @@ function TransactionInformation() {
                   <div>
                     <TextAreaField
                       control={method.control}
-                      name={"CardReplacement"}
+                      name={"Loyalty_Card_Fee"}
                       rows={6}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>

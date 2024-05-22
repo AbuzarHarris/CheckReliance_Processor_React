@@ -9,6 +9,7 @@ function TextInput({
   required,
   focusOptions,
   disabled = false,
+  readonly = false,
   floatLabel = false,
   onChange,
   type = "text",
@@ -33,6 +34,7 @@ function TextInput({
           <label htmlFor={field.name}>{label}</label>
           <span className={floatLabel ? "p-float-label" : ""}>
             <InputText
+              readOnly={readonly}
               disabled={disabled}
               id={field.name}
               value={field.value}

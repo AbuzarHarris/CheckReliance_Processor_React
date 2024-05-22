@@ -11,6 +11,7 @@ const TextArea = ({
   cols = 1,
   autoResize = false,
   disabled = false,
+  readonly = false,
   ...options
 }) => {
   return (
@@ -32,6 +33,7 @@ const TextArea = ({
             className={classNames({ "p-invalid": fieldState.error })}
             autoResize={autoResize}
             disabled={disabled}
+            readOnly={readonly}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault()

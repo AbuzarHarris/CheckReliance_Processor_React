@@ -23,7 +23,7 @@ const App = () => {
             element={<PendingTransatcionsPage />}
           />
           <Route
-            path={`${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/:PendingTransactionID`}
+            path={`${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/:TransactionID`}
             element={<CheckTransactionPage />}
           />
         </Route>
