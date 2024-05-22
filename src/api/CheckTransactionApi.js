@@ -19,15 +19,19 @@ export async function Pending_Transaction_List({
   User_Role,
   Process_Pendings,
 }) {
-  const { data } = await axios.post(
-    `${apiUrl}/${CONTROLLER}/${PENDING_TRANSACTION_LIST}`,
-    {
-      UserId: UserId,
-      User_Role: User_Role,
-      Process_Pendings: Process_Pendings,
-    }
-  )
-  return data ?? []
+  try {
+    const { data } = await axios.post(
+      `${apiUrl}/${CONTROLLER}/${PENDING_TRANSACTION_LIST}`,
+      {
+        UserId: UserId,
+        User_Role: User_Role,
+        Process_Pendings: Process_Pendings,
+      }
+    )
+    return data ?? []
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export async function Check_Transaction_data({ UserId, TransactionID }) {

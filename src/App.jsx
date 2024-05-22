@@ -28,6 +28,14 @@ const App = () => {
           />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-center"
+        pauseOnHover={false}
+        theme="dark"
+        closeOnClick
+        autoClose={1500}
+        containerId={"autoClose"}
+      />
       <ConfirmDialog
         id="EditDeleteDialog"
         draggable={false}
@@ -45,14 +53,6 @@ const App = () => {
             },
           },
         }}
-      />
-      <ToastContainer
-        position="top-center"
-        pauseOnHover={false}
-        theme="light"
-        closeOnClick
-        autoClose={1500}
-        containerId={"autoClose"}
       />
     </>
   )
