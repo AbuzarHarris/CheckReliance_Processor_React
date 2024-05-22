@@ -7,6 +7,7 @@ import axios from "axios"
 import { useToastHook } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useAuthProvider } from "../../context/AuthContext"
+import Logo from "../../assets/cheque-reliance-logo.png"
 
 const API_URL = import.meta.env.VITE_APP_API_URL
 
@@ -30,9 +31,9 @@ const Login = () => {
           `${API_URL}/Users/User_Get`,
           formData
         )
-        console.log(data, status)
 
         if (status === 200) {
+          data.UserId = formData.UserId
           loginUser(data)
           navigate("/")
           showSuccessToast({ message: "Login Successful!" })
@@ -40,7 +41,6 @@ const Login = () => {
           showErrorToast({ message: data.message, summary: data.status })
         }
       } catch (e) {
-        console.log(e)
         showErrorToast({
           message: e.response.data.Message,
           summary: e.response.data.Status,
@@ -60,17 +60,37 @@ const Login = () => {
   return (
     <div
       style={{ height: "100vh" }}
-      className=" mx-auto w-full flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8 bg-white"
+      className=" mx-auto w-full flex items-center justify-center xl:justify-between lg:justify-between  px-4 py-16 sm:px-6 lg:px-8 bg-white flex-col lg:flex-row xl:flex-row"
     >
+      <div className="flex items-center mb-[3rem] lg:mb-0 xl:mb-0  justify-center lg:w-[50%]">
+        <div className="image-container lg:flex lg:items-center lg:justify-center  ">
+          <img
+            src={Logo}
+            alt="Logo"
+            style={{
+              width: "50%",
+              height: "50%",
+              objectFit: "contain",
+              userSelect: "none",
+              margin: "0 auto",
+            }}
+          />
+        </div>
+      </div>
+
       <div className="mx-auto w-full lg:w-[50%]">
         <form
           onSubmit={method.handleSubmit(onSubmit)}
-          className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] sm:p-6 lg:p-8 w-full"
+          className="mb-0 mt-6 space-y-4 lg:h-[50%] lg:pl-0 xl:pl-0 rounded-lg p-4  sm:p-6 lg:p-8 w-full"
         >
-          <p className="text-center text-lg font-medium">PROCESSOR LOGIN</p>
+          <h1 className="text-center text-3xl xl:text-4xl lg:text-4xl font-bold">
+            PROCESSOR LOGIN
+          </h1>
 
           <div>
-            <label htmlFor="UserId">USERNAME</label>
+            <label htmlFor="UserId" className="font-semibold">
+              USERNAME
+            </label>
 
             <div className="relative">
               <TextInputField
@@ -80,7 +100,7 @@ const Login = () => {
                 rootStyle={{
                   width: "100%",
                   padding: "0.7rem",
-                  fontSize: "0.9em",
+                  fontSize: "1rem",
                   boxShadow: "",
                 }}
                 required={true}
@@ -107,7 +127,9 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="UserId">PASSWORD</label>
+            <label htmlFor="UserId" className="font-semibold">
+              PASSWORD
+            </label>
             <TextInputField
               control={method.control}
               name={"Password"}
@@ -115,7 +137,7 @@ const Login = () => {
               rootStyle={{
                 width: "100%",
                 padding: "0.7rem",
-                fontSize: "0.9em",
+                fontSize: "1rem",
                 boxShadow: "",
               }}
               required={true}
@@ -127,8 +149,17 @@ const Login = () => {
           <Button
             loading={mutation.isPending}
             loadingIcon="pi pi-spin pi-spinner"
-            className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white text-center"
+            className="block w-full rounded-lg  px-5 py-3 text-sm font-medium text-white text-center"
             label={mutation.isPending ? "Signing in..." : "SIGN IN"}
+            pt={{
+              root: {
+                style: {
+                  background: "#13A0FE",
+                  borderColor: "#13A0FE",
+                  outline: "none",
+                },
+              },
+            }}
           />
         </form>
         {render}
