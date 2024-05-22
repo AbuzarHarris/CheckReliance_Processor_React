@@ -23,11 +23,19 @@ const App = () => {
             element={<PendingTransatcionsPage />}
           />
           <Route
-            path={`${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/:PendingTransactionID`}
+            path={`${ROUTE_URLS.CHECK_TRANSACTION_DETAIL_ROUTE_URL}`}
             element={<CheckTransactionPage />}
           />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-center"
+        pauseOnHover={false}
+        theme="dark"
+        closeOnClick
+        autoClose={1500}
+        containerId={"autoClose"}
+      />
       <ConfirmDialog
         id="EditDeleteDialog"
         draggable={false}
@@ -45,14 +53,6 @@ const App = () => {
             },
           },
         }}
-      />
-      <ToastContainer
-        position="top-center"
-        pauseOnHover={false}
-        theme="light"
-        closeOnClick
-        autoClose={1500}
-        containerId={"autoClose"}
       />
     </>
   )

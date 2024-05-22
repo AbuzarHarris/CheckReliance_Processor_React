@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { DataTable } from "primereact/datatable"
 import { Column } from "primereact/column"
 import { Link } from "react-router-dom"
@@ -9,9 +9,11 @@ import { Pending_Transaction_List } from "../../api/CheckTransactionApi"
 import { useAuthProvider } from "../../context/AuthContext"
 
 const PendingTransactions = () => {
+  const [reloadData, setReloadData] = useState(false)
   const { user } = useAuthProvider()
+
   const { data: PendingTransactionsData } = useQuery({
-    queryKey: [QUERY_KEY.PENDING_TRANSACTION_LIST],
+    queryKey: [QUERY_KEY.PENDING_TRANSACTION_LIST, reloadData],
     queryFn: () =>
       Pending_Transaction_List({
         UserId: "ifty",
@@ -21,14 +23,12 @@ const PendingTransactions = () => {
     enabled: user != null,
     refetchOnWindowFocus: false,
   })
-  console.log(PendingTransactionsData)
+
   const LinkTemplate = (data) => {
     return (
       <>
-        <Link
-          to={`${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/${data.Transaction_ID}`}
-        >
-          <Button label={data.Transaction_ID} link />
+        <Link to={`${ROUTE_URLS.CHECK_TRANSACTION_DETAIL_ROUTE_URL}`}>
+          <Button label={`${data.Transaction_ID}`} link />
         </Link>
       </>
     )
@@ -36,6 +36,13 @@ const PendingTransactions = () => {
 
   return (
     <>
+      <div className="mb-2">
+        <Button
+          icon="pi pi-refresh"
+          tooltip="Refresh"
+          onClick={() => setReloadData((prev) => !prev)}
+        />
+      </div>
       <DataTable
         showGridlines
         value={PendingTransactionsData}

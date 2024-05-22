@@ -11,7 +11,7 @@ export const AuthProvier = ({ children }) => {
   const location = useLocation()
 
   function loginUser(data, navigateToDashBoard = true) {
-    localStorage.setItem("user", window.btoa(JSON.stringify(data)))
+    localStorage.setItem("eJypiOl", window.btoa(JSON.stringify(data)))
     setUser(data)
     if (navigateToDashBoard) {
       navigate("/", { replace: true })
@@ -19,14 +19,14 @@ export const AuthProvier = ({ children }) => {
   }
 
   function updateUserName(username) {
-    let existingUserObj = JSON.parse(localStorage.getItem("user"))
+    let existingUserObj = JSON.parse(localStorage.getItem("eJypiOl"))
     existingUserObj.username = username
-    localStorage.setItem("user", JSON.stringify(existingUserObj))
+    localStorage.setItem("eJypiOl", JSON.stringify(existingUserObj))
     setUser(existingUserObj)
   }
 
   function logoutUser() {
-    localStorage.removeItem("user")
+    localStorage.removeItem("eJypiOl")
     setUser(null)
     navigate("/auth")
   }
@@ -35,7 +35,7 @@ export const AuthProvier = ({ children }) => {
     function checkUser() {
       try {
         if (!user) {
-          const userData = localStorage.getItem("user")
+          const userData = localStorage.getItem("eJypiOl")
           if (userData !== null) {
             setUser(JSON.parse(window.atob(userData)))
             navigate(location.pathname + location.search)
