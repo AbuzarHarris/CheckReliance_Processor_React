@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { useAuthProvider } from "../context/AuthContext"
 import { confirmDialog } from "primereact/confirmdialog"
 import { ROUTE_URLS } from "../utils/enums"
+import Logo from "../assets/cheque-reliance-logo.png"
 
 const Sidebar = () => {
   const [visible, setVisible] = useState(false)
@@ -19,6 +20,10 @@ const Sidebar = () => {
     }
   })
 
+  const closeSidebar = () => {
+    setVisible(false)
+  }
+
   return (
     <>
       <MenubarComponent showSidebar={() => setVisible(true)} />
@@ -31,7 +36,19 @@ const Sidebar = () => {
         >
           <div className="fixed flex flex-col top-0 shadow-xl left-0 w-64 bg-white h-full border-r">
             <div className="flex items-center justify-between mx-5 h-14 border-b">
-              <div>Cheque Reliance</div>
+              <div className="flex items-center w-full">
+                <div>
+                  <img
+                    src={Logo}
+                    alt="Logo"
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+              </div>
               <i
                 className="pi pi-times hover:cursor-pointer"
                 onClick={() => setVisible(false)}
@@ -48,6 +65,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={closeSidebar}
                     to={"/"}
                     className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
                   >
@@ -74,6 +92,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={closeSidebar}
                     to={ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}
                     className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
                   >
@@ -101,7 +120,7 @@ const Sidebar = () => {
                     </span> */}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="#"
                     className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
@@ -282,7 +301,7 @@ const Sidebar = () => {
                       Settings
                     </span>
                   </a>
-                </li>
+                </li> */}
                 <LogOutButton />
               </ul>
             </div>

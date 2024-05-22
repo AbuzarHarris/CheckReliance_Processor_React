@@ -1,12 +1,13 @@
 export const ROUTE_URLS = {
   HOME_PAGE_ROUTE_URL: "/home",
   CHECK_TRANSACTION_ROUTE_URL: "/pendingtransactions",
+  CHECK_TRANSACTION_DETAIL_ROUTE_URL: "/pendingtransactionsdetail",
   LOGIN_PAGE_ROUTE_URL: "/auth",
 }
 
 export const FORM_TITLES = {
   HOME_PAGE_TITLE: "Home",
-  CHECK_TRANSACTION_TITLE: "Pending Transaction",
+  CHECK_TRANSACTION_TITLE: "Pending Transactions",
   LOGIN_PAGE_TITLE: "Login",
 }
 
