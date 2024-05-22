@@ -599,7 +599,7 @@ export default function MakerInformationStyleTwo() {
         </div> */}
         <FormRow>
           <FormColumn className="col-span-12 lg:col-span-6 xl:col-span-6 md:col-span-12">
-            <div className={`p-2  ${shadow}`}>
+            <div className={`p-2  ${shadow} min-h-[10rem] h-[10rem]`}>
               <FormRow className="gap-0">
                 <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
                   <div className="flex items-center gap-5">
@@ -620,7 +620,7 @@ export default function MakerInformationStyleTwo() {
             </div>
           </FormColumn>
           <FormColumn className="col-span-12 lg:col-span-6 xl:col-span-6 md:col-span-12">
-            <div className={`p-2  ${shadow}`}>
+            <div className={`p-2  ${shadow} min-h-[10rem]`}>
               <FormRow className="gap-1">
                 <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
                   <div className="flex items-center justify-center">
@@ -633,7 +633,7 @@ export default function MakerInformationStyleTwo() {
                     <TextAreaField
                       control={method.control}
                       name={"BankName"}
-                      rows={4}
+                      rows={3}
                     />
                   </div>
                 </FormColumn>
@@ -673,7 +673,7 @@ const MakerModalCompoent = () => {
   return (
     <>
       <Button
-        label="Comments"
+        label="Maker Notes"
         text
         severity="info"
         type="button"
@@ -681,42 +681,5 @@ const MakerModalCompoent = () => {
       />
       <FormProvider {...method}>{render}</FormProvider>
     </>
-  )
-}
-
-const ButtonGroups = () => {
-  return (
-    <div className="flex items-center">
-      <Button label="Save" icon="pi pi-check" />
-      <Button label="Delete" icon="pi pi-trash" />
-      <Button label="Cancel" icon="pi pi-times" />
-    </div>
-  )
-}
-
-const SplitButtons = () => {
-  const items = [
-    {
-      label: "Update",
-      icon: "pi pi-refresh",
-    },
-    {
-      label: "Delete",
-      icon: "pi pi-times",
-    },
-    {
-      label: "React Website",
-      icon: "pi pi-external-link",
-    },
-    {
-      label: "Upload",
-      icon: "pi pi-upload",
-    },
-  ]
-
-  return (
-    <div className="card flex justify-content-center flex-wrap">
-      <SplitButton label="Save" icon="pi pi-plus" model={items} />
-    </div>
   )
 }

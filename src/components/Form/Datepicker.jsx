@@ -25,6 +25,7 @@ const DatePicker = ({
             onChange={field.onChange}
             dateFormat={dateFormat}
             style={{ width: "100%" }}
+            hideOnDateTimeSelect
             className={classNames({ "p-invalid": fieldState.error })}
             showTime={showTime}
             showIcon={showIcon}
@@ -43,7 +44,26 @@ const DatePicker = ({
               },
               panel: {
                 style: {
-                  width: "10%",
+                  width: "20%",
+                  maxWidth: "20%",
+                },
+              },
+              tableHeaderCell: {
+                style: {
+                  padding: "0.1rem",
+                  margin: 0,
+                },
+              },
+              day: {
+                style: {
+                  padding: "0.1rem",
+                  margin: 0,
+                },
+              },
+              dayLabel: {
+                style: {
+                  padding: 0,
+                  margin: 0,
                 },
               },
             }}

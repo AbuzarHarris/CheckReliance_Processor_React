@@ -1,10 +1,9 @@
 import React from "react"
 import { Menubar } from "primereact/menubar"
-import { ThemeSwitcherComponent } from "../components"
-import { Button } from "primereact/button"
 import { Avatar } from "primereact/avatar"
 import { useLocation } from "react-router-dom"
 import { routesWithFormTitles } from "../utils/enums"
+import { useAuthProvider } from "../context/AuthContext"
 
 export default function MenubarComponent({ showSidebar }) {
   const endContent = (
@@ -12,9 +11,7 @@ export default function MenubarComponent({ showSidebar }) {
       {/* <ThemeSwitcherComponent /> */}
       <div className="flex gap-2 items-center">
         <Avatar />
-        <div className="hover:cursor-pointer hover:bg-gray-100 p-2 rounded">
-          <span className="">ADMINISTRATOR</span>
-        </div>
+        <UserName />
         {/* <Button label="Logout" severity="danger" /> */}
       </div>
     </>
@@ -41,7 +38,6 @@ export default function MenubarComponent({ showSidebar }) {
           root: {
             style: {
               padding: "0.2rem 1rem",
-              background: "white",
             },
           },
           start: {
@@ -52,6 +48,21 @@ export default function MenubarComponent({ showSidebar }) {
         }}
       />
     </div>
+  )
+}
+
+const UserName = () => {
+  const { user } = useAuthProvider()
+  return (
+    <>
+      {user ? (
+        <>
+          <div className="hover:cursor-pointer hover:bg-gray-200 p-2 rounded">
+            <span className=""> {`${user.First_Name} ${user.Last_Name}`}</span>
+          </div>
+        </>
+      ) : null}
+    </>
   )
 }
 

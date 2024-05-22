@@ -85,10 +85,9 @@ export default function CDropdown({
                 color: "black",
               }}
               pt={{
-                input: {
+                filterInput: {
                   style: {
-                    padding: "0.25rem 0.4rem",
-                    fontSize: ".9em",
+                    padding: "0.1rem 0.4rem",
                   },
                 },
                 item: {

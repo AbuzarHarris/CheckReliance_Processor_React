@@ -13,9 +13,10 @@ import {
 import { ArrowRightLeft, Banknote } from "lucide-react"
 import { Image } from "primereact/image"
 import { TabMenu } from "primereact/tabmenu"
-import MakerInformation from "./MakerInformation"
 import MakerInformationStyleTwo from "./MakerInformationStyleTwo"
 import { useSearchParams } from "react-router-dom"
+import CustomerInformation from "./CustomerInformation"
+import ReturnedChecks from "./ReturnedChecks"
 
 const FORMS_KEYS = [
   "transactioninfo",
@@ -65,11 +66,11 @@ const CheckTransaction = () => {
       case FORMS_KEYS[0]:
         return <TransactionInformation />
       case FORMS_KEYS[1]:
-        return <h1>Customer Info</h1>
+        return <CustomerInformation />
       case FORMS_KEYS[2]:
-        return <MakerInformation />
-      case FORMS_KEYS[3]:
         return <MakerInformationStyleTwo />
+      case FORMS_KEYS[3]:
+        return <ReturnedChecks />
       default:
         return <TransactionInformation />
     }
@@ -325,8 +326,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"ProcessedBy"}
+                      focusOptions={() => method.setFocus("ProcessingStatus")}
                     />
                   </div>
                 </FormColumn>
@@ -335,8 +336,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"ProcessingStatus"}
+                      focusOptions={() => method.setFocus("Guarantee")}
                     />
                   </div>
                 </FormColumn>
@@ -347,8 +348,8 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"Guarantee"}
+                      focusOptions={() => method.setFocus("PendingReason")}
                     />
                   </div>
                 </FormColumn>
@@ -357,19 +358,19 @@ function TransactionInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"CardReplacement"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"PendingReason"}
+                      focusOptions={() => method.setFocus("TransactionNotes")}
                     />
                   </div>
                 </FormColumn>
               </FormRow>
               <FormRow>
                 <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
-                  <FormLabel>Gurantee</FormLabel>
+                  <FormLabel>Transaction Notes</FormLabel>
                   <div>
                     <TextAreaField
                       control={method.control}
-                      name={"CardReplacement"}
+                      name={"TransactionNotes"}
                       rows={3}
                     />
                   </div>

@@ -15,6 +15,12 @@ function TextInput({
   placeHolder = "",
   errorMessage = "This field is required!",
   showErrorMessage = true,
+  rootStyle = {
+    width: "100%",
+    padding: "0.1rem 0.3rem",
+    fontSize: ".9em",
+  },
+  rootClassName = "",
   ...props
 }) {
   return (
@@ -37,9 +43,6 @@ function TextInput({
                   onChange(e)
                 }
               }}
-              //   pt={{
-              //     root: { style: { padding: "0.3rem 0.4rem", fontSize: ".9em" } },
-              //   }}
               onKeyDown={(e) => {
                 if (focusOptions) {
                   if (e.key === "Enter") {
@@ -49,14 +52,10 @@ function TextInput({
               }}
               pt={{
                 root: {
-                  style: {
-                    width: "100%",
-                    padding: "0.1rem 0.3rem",
-                    fontSize: ".9em",
-                  },
+                  style: rootStyle,
                 },
               }}
-              className={classNames({
+              className={classNames(rootClassName, {
                 "p-invalid": fieldState.error,
               })}
               autoComplete="off"
@@ -66,7 +65,7 @@ function TextInput({
             />
             {showErrorMessage && (
               <>
-                <span className="text-danger text-sm">
+                <span className="text-red-500 text-sm">
                   {fieldState.error ? errorMessage : ""}
                 </span>
               </>
