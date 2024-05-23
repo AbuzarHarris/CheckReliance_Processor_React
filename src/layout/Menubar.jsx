@@ -57,7 +57,7 @@ const UserName = () => {
     <>
       {user ? (
         <>
-          <div className="hover:cursor-pointer hover:bg-gray-200 p-2 rounded">
+          <div className="hover:cursor-pointer hover:bg-gray-200 rounded">
             <span className=""> {`${user.First_Name} ${user.Last_Name}`}</span>
           </div>
         </>
