@@ -18,17 +18,33 @@ import { Image } from "primereact/image"
 export default function CustomerInformation() {
   const method = useForm({
     defaultValues: {
-      CustomerID: 0,
+      Customer_ID: "",
       IDType: null,
-      CustomerStatus: "",
-      StatusReason: "",
-      FirstName: "",
-      LastName: "",
-      MiddleInital: "",
+      Account_Status: "",
+      Account_Status_Reason: "",
+      First_Name: "",
+      Last_Name: "",
+      Middle_Initial: "",
       CommercialCustomer: "",
-      DrivingLicense: "",
-      ExpirationDate: new Date(),
+      DL_Number: "",
+      DL_Expiration: new Date(),
+      DL_State: "",
+      Date_Of_Birth: new Date(),
+      Phone: "",
+      Customer_Processing_Fee: "",
+      Company_Paperwork_Completed: false,
+      CTR_Paperwork_Completed: false,
+      Street_Address: "",
+      Apt_Number: "",
+      City: "",
       State: "",
+      Zip: "",
+      Enroll_Date: new Date(),
+      Enroll_Store_Id: "",
+      Enroll_Store_Name: "",
+      Last_Modified_Date: new Date(),
+      Last_Modified_Store_Id: "",
+      Last_Modified_Store_Name: "",
     },
   })
   const shadow = "bg-white mb-3 rounded-xl"
@@ -42,18 +58,18 @@ export default function CustomerInformation() {
           >
             <FormRow className="my-2">
               <FormColumn className="col-span-12 lg:col-span-2 xl:col-span-2 md:col-span-12">
-                <FormLabel>Customer ID</FormLabel>
+                <FormLabel>Customer ID:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"TransactionID"}
+                    name={"Customer_ID"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
                     readonly={true}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-2 xl:col-span-2 md:col-span-12">
-                <FormLabel>ID Type</FormLabel>
+                <FormLabel>ID Type:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
@@ -63,23 +79,25 @@ export default function CustomerInformation() {
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-3 xl:col-span-3 md:col-span-12">
-                <FormLabel>Customer Status</FormLabel>
+                <FormLabel>Customer Status:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"TransactionID"}
-                    focusOptions={() => method.setFocus("TransactionDateTime")}
+                    name={"Account_Status"}
+                    focusOptions={() =>
+                      method.setFocus("Account_Status_Reason")
+                    }
                     readonly={true}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-5 xl:col-span-5 md:col-span-12">
-                <FormLabel>Status Reason</FormLabel>
+                <FormLabel>Status Reason:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"TransactionID"}
-                    focusOptions={() => method.setFocus("TransactionDateTime")}
+                    name={"Account_Status_Reason"}
+                    focusOptions={() => method.setFocus("First_Name")}
                     readonly={true}
                   />
                 </div>
@@ -87,31 +105,31 @@ export default function CustomerInformation() {
             </FormRow>
             <FormRow>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>First Name</FormLabel>
+                <FormLabel>First Name:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"RoutingNumber"}
-                    focusOptions={() => method.setFocus("AccountNumber")}
+                    name={"First_Name"}
+                    focusOptions={() => method.setFocus("Last_Name")}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Last Name</FormLabel>
+                <FormLabel>Last Name:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"AccountNumber"}
-                    focusOptions={() => method.setFocus("BankName")}
+                    name={"Last_Name"}
+                    focusOptions={() => method.setFocus("Middle_Initial")}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Middle Initial</FormLabel>
+                <FormLabel>Middle Initial:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"BankName"}
+                    name={"Middle_Initial"}
                     focusOptions={() => method.setFocus("TransactionDateTime")}
                   />
                 </div>
@@ -119,7 +137,7 @@ export default function CustomerInformation() {
             </FormRow>
             <FormRow className="mt-4 mb-2">
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Commercial Customer (if any)</FormLabel>
+                <FormLabel>Commercial Customer (if any):</FormLabel>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-8 xl:col-span-8 md:col-span-12">
                 <div>
@@ -134,48 +152,54 @@ export default function CustomerInformation() {
             </FormRow>
             <FormRow className="mb-2">
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Driving License or ID#</FormLabel>
+                <FormLabel>Driving License or ID#:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"StoreName"}
-                    focusOptions={() => method.setFocus("RoutingNumber")}
+                    name={"DL_Number"}
+                    focusOptions={() => method.setFocus("DL_Expiration")}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Expiration Date</FormLabel>
+                <FormLabel>Expiration Date:</FormLabel>
                 <div>
-                  <DatePickerField control={method.control} name={"StoreID"} />
+                  <DatePickerField
+                    control={method.control}
+                    name={"DL_Expiration"}
+                  />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>State</FormLabel>
+                <FormLabel>State:</FormLabel>
                 <div>
-                  <TextInputField control={method.control} name={"StoreID"} />
+                  <TextInputField control={method.control} name={"DL_State"} />
                 </div>
               </FormColumn>
             </FormRow>
             <FormRow>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Date Of Birth</FormLabel>
+                <FormLabel>Date Of Birth:</FormLabel>
                 <div>
                   <DatePickerField
                     control={method.control}
-                    name={"StoreName"}
+                    name={"Date_Of_Birth"}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Phone No</FormLabel>
+                <FormLabel>Phone Number:</FormLabel>
                 <div>
-                  <TextInputField control={method.control} name={"StoreID"} />
+                  <TextInputField control={method.control} name={"Phone"} />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Personal Check Fee</FormLabel>
+                <FormLabel>Personal Check Fee:</FormLabel>
                 <div>
-                  <TextInputField control={method.control} name={"StoreID"} />
+                  <TextInputField
+                    control={method.control}
+                    name={"Customer_Processing_Fee"}
+                  />
                 </div>
               </FormColumn>
             </FormRow>
@@ -184,8 +208,8 @@ export default function CustomerInformation() {
                 <div>
                   <CheckBoxField
                     control={method.control}
-                    name={"InActive"}
-                    label={"Company Paper Work Completed"}
+                    name={"Company_Paperwork_Completed"}
+                    label={"Company Paper Work Completed:"}
                   />
                 </div>
               </FormColumn>
@@ -193,85 +217,80 @@ export default function CustomerInformation() {
                 <div>
                   <CheckBoxField
                     control={method.control}
-                    name={"InActive"}
-                    label={"CTR Paper Completed"}
+                    name={"CTR_Paperwork_Completed"}
+                    label={"CTR Paperwork Completed:"}
                   />
                 </div>
               </FormColumn>
             </FormRow>
             <FormRow>
               <FormColumn className="col-span-12 lg:col-span-8 xl:col-span-8 md:col-span-12">
-                <FormLabel>Street Address</FormLabel>
+                <FormLabel>Street Address:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"CardReplacement"}
+                    name={"Street_Address"}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>APT #</FormLabel>
+                <FormLabel>APT #:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"CardReplacement"}
+                    name={"Apt_Number"}
                   />
                 </div>
               </FormColumn>
             </FormRow>
             <FormRow className="my-2">
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>City</FormLabel>
+                <FormLabel>City:</FormLabel>
+                <div>
+                  <TextInputField control={method.control} name={"City"} />
+                </div>
+              </FormColumn>
+              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
+                <FormLabel>State:</FormLabel>
+                <div>
+                  <TextInputField control={method.control} name={"State"} />
+                </div>
+              </FormColumn>
+              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
+                <FormLabel>Zip:</FormLabel>
+                <div>
+                  <TextInputField control={method.control} name={"Zip"} />
+                </div>
+              </FormColumn>
+            </FormRow>
+            <FormRow className="my-2">
+              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
+                <FormLabel>Enrollment Date:</FormLabel>
                 <div>
                   <DatePickerField
                     control={method.control}
-                    name={"StoreName"}
+                    name={"Enroll_Date"}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>State</FormLabel>
-                <div>
-                  <TextInputField control={method.control} name={"StoreID"} />
-                </div>
-              </FormColumn>
-              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Zip</FormLabel>
-                <div>
-                  <TextInputField control={method.control} name={"StoreID"} />
-                </div>
-              </FormColumn>
-            </FormRow>
-            <FormRow className="my-2">
-              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Enrollment Date</FormLabel>
+                <FormLabel>Store ID:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"RoutingNumber"}
-                    focusOptions={() => method.setFocus("AccountNumber")}
+                    name={"Enroll_Store_Id"}
+                    focusOptions={() => method.setFocus("Enroll_Store_Name")}
                     readonly={true}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Store ID</FormLabel>
+                <FormLabel>Store Name:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"AccountNumber"}
-                    focusOptions={() => method.setFocus("BankName")}
-                    readonly={true}
-                  />
-                </div>
-              </FormColumn>
-              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Store Name</FormLabel>
-                <div>
-                  <TextInputField
-                    control={method.control}
-                    name={"BankName"}
-                    focusOptions={() => method.setFocus("TransactionDateTime")}
+                    name={"Enroll_Store_Name"}
+                    focusOptions={() => method.setFocus("Last_Modified_Date")}
                     readonly={true}
                   />
                 </div>
@@ -279,34 +298,36 @@ export default function CustomerInformation() {
             </FormRow>
             <FormRow className="my-2">
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Enrollment Date</FormLabel>
+                <FormLabel>Last Modified:</FormLabel>
+                <div>
+                  <DatePickerField
+                    control={method.control}
+                    name={"Last_Modified_Date"}
+                  />
+                </div>
+              </FormColumn>
+              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
+                <FormLabel>Store ID:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"RoutingNumber"}
-                    focusOptions={() => method.setFocus("AccountNumber")}
+                    name={"Last_Modified_Store_Id"}
+                    focusOptions={() =>
+                      method.setFocus("Last_Modified_Store_Name")
+                    }
                     readonly={true}
                   />
                 </div>
               </FormColumn>
               <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Store ID</FormLabel>
+                <FormLabel>Store Name:</FormLabel>
                 <div>
                   <TextInputField
                     control={method.control}
-                    name={"AccountNumber"}
-                    focusOptions={() => method.setFocus("BankName")}
-                    readonly={true}
-                  />
-                </div>
-              </FormColumn>
-              <FormColumn className="col-span-12 lg:col-span-4 xl:col-span-4 md:col-span-12">
-                <FormLabel>Store Name</FormLabel>
-                <div>
-                  <TextInputField
-                    control={method.control}
-                    name={"BankName"}
-                    focusOptions={() => method.setFocus("TransactionDateTime")}
+                    name={"Last_Modified_Store_Name"}
+                    focusOptions={() =>
+                      method.setFocus("Last_Modified_Store_Name")
+                    }
                     readonly={true}
                   />
                 </div>
