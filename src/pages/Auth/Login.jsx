@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <div
       style={{ height: "100vh" }}
-      className=" mx-auto w-full flex items-center justify-center xl:justify-between lg:justify-between  px-4 py-16 sm:px-6 lg:px-8 bg-white flex-col lg:flex-row xl:flex-row"
+      className="mx-auto w-full flex items-center justify-center xl:justify-between lg:justify-between  px-4 py-16 sm:px-6 lg:px-8 bg-white flex-col lg:flex-row xl:flex-row"
     >
       <div className="flex items-center mb-[3rem] lg:mb-0 xl:mb-0  justify-center lg:w-[50%]">
         <div className="image-container lg:flex lg:items-center lg:justify-center  ">
@@ -78,10 +78,10 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-full lg:w-[50%]">
+      <div className="mx-auto w-full md:w-[50%] lg:w-[25%]">
         <form
           onSubmit={method.handleSubmit(onSubmit)}
-          className="mb-0 mt-6 space-y-4 lg:h-[50%] lg:pl-0 xl:pl-0 rounded-lg p-4  sm:p-6 lg:p-8 w-full"
+          className="mb-0 mt-6 space-y-4 lg:h-[25%] lg:pl-0 xl:pl-0 rounded-lg p-4  sm:p-6 lg:p-8 w-full"
         >
           <h1 className="text-center text-3xl xl:text-4xl lg:text-4xl font-bold">
             PROCESSOR LOGIN

@@ -18,8 +18,9 @@ function TextInput({
   showErrorMessage = true,
   rootStyle = {
     width: "100%",
-    padding: "0.1rem 0.3rem",
-    fontSize: ".9em",
+    padding: "0rem 0.3rem",
+    fontSize: "1.0em",
+    borderRadius: "5px",
   },
   rootClassName = "",
   ...props

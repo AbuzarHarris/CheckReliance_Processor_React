@@ -17,6 +17,7 @@ import MakerInformation from "./MakerInformation"
 import { useParams, useSearchParams } from "react-router-dom"
 import CustomerInformation from "./CustomerInformation"
 import ReturnedChecks from "./ReturnedChecks"
+import { Button } from "primereact/button"
 
 const FORMS_KEYS = [
   "transactioninfo",
@@ -47,7 +48,7 @@ const CheckTransaction = () => {
       },
     },
     {
-      label: "Make Information",
+      label: "Maker Information",
       icon: "pi pi-list",
       command: () => {
         setSearchParams({ activeTab: FORMS_KEYS[2] })
@@ -82,9 +83,17 @@ const CheckTransaction = () => {
       <TabMenu
         model={items}
         activeIndex={FORMS_KEYS.indexOf(tab)}
-        style={{ overflowY: "hidden" }}
+        style={{ overflowY: "hidden", padding: "1px" }}
+        pt={{
+          action: {
+            style: {
+              paddingTop: "8px",
+              paddingBottom: "8px",
+            },
+          },
+        }}
       />
-      <div className="mt-2">{showSection()}</div>
+      <div className="">{showSection()}</div>
     </div>
   )
 }
@@ -391,6 +400,20 @@ function TransactionInformation() {
                   </div>
                 </FormColumn>
               </FormRow>
+              <div className={`p-2 flex items-center gap-2`}>
+                <Button
+                  className="flex-1"
+                  type="button"
+                  label="UPDATE TRANSACTION INFO"
+                  severity="success"
+                />
+                <Button
+                  className="flex-1"
+                  type="button"
+                  label="SAVE TRANSACTION NOTES"
+                  severity="secondary"
+                />
+              </div>
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5 xl:col-span-5">

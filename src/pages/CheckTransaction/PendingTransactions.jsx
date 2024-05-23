@@ -27,7 +27,11 @@ const PendingTransactions = () => {
   const LinkTemplate = (data) => {
     return (
       <>
-        <Link to={`${ROUTE_URLS.CHECK_TRANSACTION_DETAIL_ROUTE_URL}`}>
+        <Link
+          to={
+            `${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/` + data.Transaction_ID
+          }
+        >
           <Button label={`${data.Transaction_ID}`} link />
         </Link>
       </>
