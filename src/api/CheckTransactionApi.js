@@ -30,8 +30,8 @@ export async function Pending_Transaction_List({
       }
     )
     return data ?? []
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err)
   }
 }
 
