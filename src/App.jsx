@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom"
 import { ProtectedRoutes } from "./layout"
 import {
   CheckTransactionPage,
+  EnrollStorePage,
   HomePage,
   LoginPage,
   PendingTransatcionsPage,
@@ -25,6 +26,10 @@ const App = () => {
           <Route
             path={`${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/:TransactionID`}
             element={<CheckTransactionPage />}
+          />
+          <Route
+            path={`${ROUTE_URLS.ENROLL_STORE_ROUTE_URL}`}
+            element={<EnrollStorePage />}
           />
         </Route>
       </Routes>

@@ -68,6 +68,7 @@ const UserName = () => {
 
 const CurrentPageTitle = () => {
   const { pathname } = useLocation()
+  console.log(routesWithFormTitles)
   return (
     <>
       <p className="p-0 m-0 font-bold text-xl">

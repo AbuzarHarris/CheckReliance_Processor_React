@@ -3,12 +3,14 @@ export const ROUTE_URLS = {
   CHECK_TRANSACTION_ROUTE_URL: "/pendingtransactions",
   CHECK_TRANSACTION_DETAIL_ROUTE_URL: "/pendingtransactionsdetail",
   LOGIN_PAGE_ROUTE_URL: "/auth",
+  ENROLL_STORE_ROUTE_URL: "/enrollStrore",
 }
 
 export const FORM_TITLES = {
   HOME_PAGE_TITLE: "Home",
   CHECK_TRANSACTION_TITLE: "Pending Transactions",
   LOGIN_PAGE_TITLE: "Login",
+  ENROLL_STORE_TITLE:"Enroll Store",
 }
 
 export const routesWithFormTitles = {}
