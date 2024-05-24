@@ -29,7 +29,9 @@ const PendingTransactions = () => {
       <>
         <Link
           to={
-            `${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/` + data.Transaction_ID
+            `${ROUTE_URLS.CHECK_TRANSACTION_ROUTE_URL}/` +
+            data.Transaction_ID +
+            "?activeTab=transactioninfo"
           }
         >
           <Button label={`${data.Transaction_ID}`} link />

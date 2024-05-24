@@ -10,7 +10,7 @@ const DatePicker = ({
   required = false,
   showTime = false,
   showIcon = false,
-  dateFormat = "dd-M-yy",
+  dateFormat = "mm/dd/yy",
 }) => {
   return (
     <Controller

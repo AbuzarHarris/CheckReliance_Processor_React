@@ -21,4 +21,5 @@ for (const key in ROUTE_URLS) {
 
 export const QUERY_KEY = {
   PENDING_TRANSACTION_LIST: "Pending_Transaction_List",
+  CHECK_TRANSACTION_DATA: "Check_Transaction_data",
 }

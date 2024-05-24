@@ -18,6 +18,10 @@ import { useParams, useSearchParams } from "react-router-dom"
 import CustomerInformation from "./CustomerInformation"
 import ReturnedChecks from "./ReturnedChecks"
 import { Button } from "primereact/button"
+import { Check_Transaction_data } from "../../api/CheckTransactionApi"
+import { useQuery } from "@tanstack/react-query"
+import { QUERY_KEY } from "../../utils/enums"
+import { useAuthProvider } from "../../context/AuthContext"
 
 const FORMS_KEYS = [
   "transactioninfo",
@@ -28,10 +32,25 @@ const FORMS_KEYS = [
 
 const CheckTransaction = () => {
   const { TransactionID } = useParams()
+  const { user } = useAuthProvider()
   const [searchParams, setSearchParams] = useSearchParams()
   const queryParams = new URLSearchParams(searchParams)
   const tab = queryParams.get("activeTab")
-
+  const {
+    data: data,
+    isLoading,
+    isFetching,
+  } = useQuery({
+    queryKey: [QUERY_KEY.CHECK_TRANSACTION_DATA, TransactionID],
+    queryFn: () =>
+      Check_Transaction_data({
+        UserId: "ifty",
+        TransactionID: TransactionID,
+      }),
+    enabled: user != null,
+    refetchOnWindowFocus: false,
+    retry: false,
+  })
   const items = [
     {
       label: "Transaction Information",
@@ -66,7 +85,14 @@ const CheckTransaction = () => {
   function showSection() {
     switch (tab) {
       case FORMS_KEYS[0]:
-        return <TransactionInformation />
+        console.log(data.transactiondata, "rendered")
+        return (
+          <>
+            {data.transactiondata ? (
+              <TransactionInformation transactiondata={data?.transactiondata} />
+            ) : null}
+          </>
+        )
       case FORMS_KEYS[1]:
         return <CustomerInformation />
       case FORMS_KEYS[2]:
@@ -93,7 +119,11 @@ const CheckTransaction = () => {
           },
         }}
       />
-      <div className="">{showSection()}</div>
+      {isLoading || isFetching ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="">{data ? showSection() : null}</div>
+      )}
     </div>
   )
 }
@@ -101,31 +131,30 @@ const CheckTransaction = () => {
 export default CheckTransaction
 
 // Tabs
-function TransactionInformation() {
+function TransactionInformation({ transactiondata }) {
   const method = useForm({
     defaultValues: {
-      Transaction_ID: "",
-      Transaction_Date: new Date(),
-      Store_ID: "",
-      Store_Name: "",
-      Routing_Number: "",
-      Account_Number: "",
-      Bank_Name: "",
-      Check_Number: "",
-      Check_Amount: 0,
-      Fee_Percentage: null,
-      Processing_Fee: 0,
-      Loyalty_Card_Fee: 0,
-      Transaction_Fee: 0,
-      Amount_Paid: 0,
-      Check_Type: null,
-      CheckDate: new Date(),
-      Check_Date: "",
-      Processed_By_UserId: "",
-      Processing_Status: "",
-      Guarantee: null,
-      Pending_Reason: "",
-      Transaction_Notes: "",
+      Transaction_ID: transactiondata?.Transaction_ID,
+      Transaction_Date: transactiondata?.Transaction_Date,
+      Store_ID: transactiondata?.Store_ID,
+      Store_Name: transactiondata?.Store_Name,
+      Routing_Number: transactiondata?.Routing_Number,
+      Account_Number: transactiondata?.Account_Number,
+      Bank_Name: transactiondata?.Bank_Name,
+      Check_Number: transactiondata?.Check_Number,
+      Check_Amount: transactiondata?.Check_Amount,
+      Fee_Percentage: transactiondata?.Fee_Percentage,
+      Processing_Fee: transactiondata?.Processing_Fee,
+      Loyalty_Card_Fee: transactiondata?.Loyalty_Card_Fee,
+      Transaction_Fee: transactiondata?.Transaction_Fee,
+      Amount_Paid: transactiondata?.Amount_Paid,
+      Check_Type: transactiondata?.Check_Type,
+      Check_Date: new Date(transactiondata?.Check_Date),
+      Processed_By_UserId: transactiondata?.Processed_By_UserId,
+      Processing_Status: transactiondata?.Processing_Status,
+      Guarantee: transactiondata?.Guarantee,
+      Pending_Reason: transactiondata?.Pending_Reason,
+      Transaction_Notes: transactiondata?.Transaction_Notes,
     },
   })
   const shadow = "bg-white mb-3 rounded-xl"
@@ -157,10 +186,11 @@ function TransactionInformation() {
                 <FormColumn className="col-span-12 lg:col-span-8 xl:col-span-8 md:col-span-12">
                   <FormLabel>Transaction Date & Time</FormLabel>
                   <div>
-                    <DatePickerField
+                    <TextInputField
                       control={method.control}
+                      focusOptions={() => method.setFocus("Store_ID")}
                       name="Transaction_Date"
-                      showTime={true}
+                      readonly={true}
                     />
                   </div>
                 </FormColumn>
@@ -271,9 +301,7 @@ function TransactionInformation() {
                     <TextInputField
                       control={method.control}
                       name={"Processing_Fee"}
-                      focusOptions={() =>
-                        method.setFocus("TransactionDateTime")
-                      }
+                      focusOptions={() => method.setFocus("Loyalty_Card_Fee")}
                       readonly={true}
                     />
                   </div>
