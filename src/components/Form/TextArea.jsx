@@ -29,6 +29,7 @@ const TextArea = ({
               width: "100%",
               backgroundColor: disabled ? "#dee2e6" : "white",
               color: "black",
+              fontWeight: "500",
             }}
             className={classNames({ "p-invalid": fieldState.error })}
             autoResize={autoResize}

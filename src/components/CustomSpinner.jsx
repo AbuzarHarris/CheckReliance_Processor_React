@@ -10,7 +10,7 @@ export function CustomSpinner({ message = "" }) {
           </>
         ) : (
           <>
-            <div className="flex flex-column align-items-center">
+            <div className="flex flex-col items-center font-bold">
               <ProgressSpinner />
               <p>{message}</p>
             </div>

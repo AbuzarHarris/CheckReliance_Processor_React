@@ -10,57 +10,66 @@ import {
   TextAreaField,
   TextInputField,
 } from "../../components"
-import { ArrowRightLeft, Banknote } from "lucide-react"
 import { Image } from "primereact/image"
 import Cheque from "../../assets/cheque.png"
 import { Button } from "primereact/button"
-import { SplitButton } from "primereact/splitbutton"
-export default function MakerInformation() {
+export default function MakerInformation({ makerInformationData }) {
+  console.log(makerInformationData)
   const method = useForm({
     defaultValues: {
-      maker_Id: "",
-      AccountStatus: "",
-      StatusReason: null,
-      check_Type: null,
-      company_Status: "",
-      StoreManager: "",
-      routing_Number: "",
-      account_Number: "",
-      bank_Name: "",
-      maker_Name: "",
-      dbA_Name: "",
-      weekly_Limit: "",
-      address_Type: null,
-      maker_Processing_Fee: "",
-      street_Address: "",
-      city: "",
-      state: null,
-      zip: "",
-      owner_First_Name: "",
-      owner_Last_Name: "",
-      owner_Phone: "",
-      secondary_First_Name: "",
-      secondary_Last_Name: "",
-      secondary_Phone: "",
-      enroll_Date: new Date(),
-      enroll_Store_Id: 0,
-      enroll_Store_Name: "",
-      last_Transaction_Date: "",
-      last_Transaction_Store_Id: 0,
-      last_Transaction_Store_Name: "",
-      verification_Date: new Date(),
-      verified_By_UserId: "",
-      EntityCreationDate: new Date(),
-      total_Approved_No: 0,
-      total_Approved_Amount: 0,
-      total_Declined_No: 0,
-      total_Declined_Amount: 0,
-      total_Returned_No: 0,
-      total_Returned_Amount: 0,
-      total_Returned_By_Store_No: 0,
-      total_Returned_By_Store_Amount: 0,
-      total_Resolved_No: 0,
-      total_Resolved_Amount: 0,
+      Maker_Id: makerInformationData?.Maker_Id,
+      Account_Status: makerInformationData?.Account_Status,
+      Account_Status_Reason: makerInformationData?.Account_Status_Reason,
+      Check_Type: makerInformationData?.Check_Type,
+      Company_Status: makerInformationData?.Company_Status,
+      StoreManager: makerInformationData?.Maker_Id,
+      Routing_Number: makerInformationData?.Routing_Number,
+      Account_Number: makerInformationData?.Account_Number,
+      Bank_Name: makerInformationData?.Bank_Name,
+      Maker_Name: makerInformationData?.Maker_Name,
+      DBA_Name: makerInformationData?.DBA_Name,
+      Weekly_Limit: makerInformationData?.Weekly_Limit,
+      Address_Type: makerInformationData?.Address_Type,
+      Maker_Processing_Fee: makerInformationData?.Maker_Processing_Fee,
+      Street_Address: makerInformationData?.Street_Address,
+      City: makerInformationData?.City,
+      State: makerInformationData?.State,
+      Zip: makerInformationData?.Zip,
+      Owner_First_Name: makerInformationData?.Owner_First_Name,
+      Owner_Last_Name: makerInformationData?.Owner_First_Name,
+      Owner_Phone: makerInformationData?.Owner_Phone,
+      Secondary_First_Name: makerInformationData?.Secondary_First_Name,
+      Secondary_Last_Name: makerInformationData?.Secondary_Last_Name,
+      Secondary_Phone: makerInformationData?.Secondary_Phone,
+      Enroll_Date: new Date(makerInformationData?.Enroll_Date),
+      Enroll_Store_Id: makerInformationData?.Enroll_Store_Id,
+      Enroll_Store_Name: makerInformationData?.Enroll_Store_Name,
+      Last_Transaction_Date: new Date(
+        makerInformationData?.Last_Transaction_Date
+      ),
+      Last_Transaction_Store_Id:
+        makerInformationData?.Last_Transaction_Store_Id,
+      Last_Transaction_Store_Name:
+        makerInformationData?.Last_Transaction_Store_Name,
+      Verification_Date: new Date(makerInformationData?.Maker_Id),
+      Verified_By_UserId: makerInformationData?.Maker_Id,
+      Entity_Creation_Date: new Date(
+        makerInformationData?.Entity_Creation_Date
+      ),
+      Total_Approved_No: makerInformationData?.Total_Approved_No,
+      Total_Approved_Amount: makerInformationData?.Total_Approved_Amount,
+      Total_Declined_No: makerInformationData?.Total_Declined_No,
+      Total_Declined_Amount: makerInformationData?.Total_Declined_Amount,
+      Total_Returned_No: makerInformationData?.Total_Returned_No,
+      Total_Returned_Amount: makerInformationData?.Total_Returned_Amount,
+      Total_Returned_By_Store_No:
+        makerInformationData?.Total_Returned_By_Store_No,
+      Total_Returned_By_Store_Amount:
+        makerInformationData?.Total_Returned_By_Store_Amount,
+      Total_Resolved_No: makerInformationData?.Total_Resolved_No,
+      Total_Resolved_Amount: makerInformationData?.Total_Resolved_Amount,
+      Pending_Reason: makerInformationData?.Pending_Reason,
+      Pending_Decline_Reasons: makerInformationData?.Pending_Decline_Reasons,
     },
   })
   const shadow = "bg-white mb-1 rounded-xl"
@@ -76,8 +85,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"maker_Id"}
-                      focusOptions={() => method.setFocus("company_Status")}
+                      name={"Maker_Id"}
+                      focusOptions={() => method.setFocus("Account_Status")}
                     />
                   </div>
                 </FormColumn>
@@ -86,8 +95,10 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"AccountStatus"}
-                      focusOptions={() => method.setFocus("StatusReason")}
+                      name={"Account_Status"}
+                      focusOptions={() =>
+                        method.setFocus("Account_Status_Reason")
+                      }
                     />
                   </div>
                 </FormColumn>
@@ -96,8 +107,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"StatusReason"}
-                      focusOptions={() => method.setFocus("check_Type")}
+                      name={"Account_Status_Reason"}
+                      focusOptions={() => method.setFocus("Check_Type")}
                     />
                   </div>
                 </FormColumn>
@@ -108,8 +119,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"check_Type"}
-                      focusOptions={() => method.setFocus("company_Status")}
+                      name={"Check_Type"}
+                      focusOptions={() => method.setFocus("Company_Status")}
                     />
                   </div>
                 </FormColumn>
@@ -118,7 +129,7 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"company_Status"}
+                      name={"Company_Status"}
                       focusOptions={() => method.setFocus("StoreManager")}
                     />
                   </div>
@@ -129,7 +140,7 @@ export default function MakerInformation() {
                     <TextInputField
                       control={method.control}
                       name={"StoreManager"}
-                      focusOptions={() => method.setFocus("routing_Number")}
+                      focusOptions={() => method.setFocus("Routing_Number")}
                     />
                   </div>
                 </FormColumn>
@@ -140,8 +151,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"routing_Number"}
-                      focusOptions={() => method.setFocus("account_Number")}
+                      name={"Routing_Number"}
+                      focusOptions={() => method.setFocus("Account_Number")}
                     />
                   </div>
                 </FormColumn>
@@ -150,8 +161,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"account_Number"}
-                      focusOptions={() => method.setFocus("bank_Name")}
+                      name={"Account_Number"}
+                      focusOptions={() => method.setFocus("Bank_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -160,8 +171,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"bank_Name"}
-                      focusOptions={() => method.setFocus("maker_Name")}
+                      name={"Bank_Name"}
+                      focusOptions={() => method.setFocus("Maker_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -172,8 +183,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"maker_Name"}
-                      focusOptions={() => method.setFocus("dbA_Name")}
+                      name={"Maker_Name"}
+                      focusOptions={() => method.setFocus("DBA_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -182,8 +193,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"dbA_Name"}
-                      focusOptions={() => method.setFocus("weekly_Limit")}
+                      name={"DBA_Name"}
+                      focusOptions={() => method.setFocus("Weekly_Limit")}
                     />
                   </div>
                 </FormColumn>
@@ -194,8 +205,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"weekly_Limit"}
-                      focusOptions={() => method.setFocus("address_Type")}
+                      name={"Weekly_Limit"}
+                      focusOptions={() => method.setFocus("Address_Type")}
                     />
                   </div>
                 </FormColumn>
@@ -204,9 +215,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"address_Type"}
+                      name={"Address_Type"}
                       focusOptions={() =>
-                        method.setFocus("maker_Processing_Fee")
+                        method.setFocus("Maker_Processing_Fee")
                       }
                     />
                   </div>
@@ -216,8 +227,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"maker_Processing_Fee"}
-                      focusOptions={() => method.setFocus("street_Address")}
+                      name={"Maker_Processing_Fee"}
+                      focusOptions={() => method.setFocus("Street_Address")}
                     />
                   </div>
                 </FormColumn>
@@ -228,7 +239,7 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"street_Address"}
+                      name={"Street_Address"}
                     />
                   </div>
                 </FormColumn>
@@ -239,8 +250,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"city"}
-                      focusOptions={() => method.setFocus("state")}
+                      name={"City"}
+                      focusOptions={() => method.setFocus("State")}
                     />
                   </div>
                 </FormColumn>
@@ -249,8 +260,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"state"}
-                      focusOptions={() => method.setFocus("zip")}
+                      name={"State"}
+                      focusOptions={() => method.setFocus("Zip")}
                     />
                   </div>
                 </FormColumn>
@@ -259,8 +270,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"zip"}
-                      focusOptions={() => method.setFocus("owner_First_Name")}
+                      name={"Zip"}
+                      focusOptions={() => method.setFocus("Owner_First_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -271,8 +282,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"owner_First_Name"}
-                      focusOptions={() => method.setFocus("owner_Last_Name")}
+                      name={"Owner_First_Name"}
+                      focusOptions={() => method.setFocus("Owner_Last_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -281,8 +292,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"owner_Last_Name"}
-                      focusOptions={() => method.setFocus("owner_Phone")}
+                      name={"Owner_Last_Name"}
+                      focusOptions={() => method.setFocus("Owner_Phone")}
                     />
                   </div>
                 </FormColumn>
@@ -291,9 +302,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"owner_Phone"}
+                      name={"Owner_Phone"}
                       focusOptions={() =>
-                        method.setFocus("secondary_First_Name")
+                        method.setFocus("Secondary_First_Name")
                       }
                     />
                   </div>
@@ -305,9 +316,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"secondary_First_Name"}
+                      name={"Secondary_First_Name"}
                       focusOptions={() =>
-                        method.setFocus("secondary_Last_Name")
+                        method.setFocus("Secondary_Last_Name")
                       }
                     />
                   </div>
@@ -317,8 +328,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"secondary_Last_Name"}
-                      focusOptions={() => method.setFocus("secondary_Phone")}
+                      name={"Secondary_Last_Name"}
+                      focusOptions={() => method.setFocus("Secondary_Phone")}
                     />
                   </div>
                 </FormColumn>
@@ -327,8 +338,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"secondary_Phone"}
-                      focusOptions={() => method.setFocus("enroll_Date")}
+                      name={"Secondary_Phone"}
+                      focusOptions={() => method.setFocus("Enroll_Date")}
                     />
                   </div>
                 </FormColumn>
@@ -339,7 +350,7 @@ export default function MakerInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name="enroll_Date"
+                      name="Enroll_Date"
                       showTime={true}
                     />
                   </div>
@@ -349,8 +360,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"enroll_Store_Id"}
-                      focusOptions={() => method.setFocus("enroll_Store_Name")}
+                      name={"Enroll_Store_Id"}
+                      focusOptions={() => method.setFocus("Enroll_Store_Name")}
                     />
                   </div>
                 </FormColumn>
@@ -359,9 +370,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"enroll_Store_Name"}
+                      name={"Enroll_Store_Name"}
                       focusOptions={() =>
-                        method.setFocus("last_Transaction_Date")
+                        method.setFocus("Last_Transaction_Date")
                       }
                     />
                   </div>
@@ -373,11 +384,8 @@ export default function MakerInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name="last_Transaction_Date"
+                      name="Last_Transaction_Date"
                       showTime={true}
-                      focusOptions={() =>
-                        method.setFocus("last_Transaction_Store_Id")
-                      }
                     />
                   </div>
                 </FormColumn>
@@ -386,9 +394,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"last_Transaction_Store_Id"}
+                      name={"Last_Transaction_Store_Id"}
                       focusOptions={() =>
-                        method.setFocus("last_Transaction_Store_Name")
+                        method.setFocus("Last_Transaction_Store_Name")
                       }
                     />
                   </div>
@@ -398,8 +406,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"last_Transaction_Store_Name"}
-                      focusOptions={() => method.setFocus("verification_Date")}
+                      name={"Last_Transaction_Store_Name"}
+                      focusOptions={() => method.setFocus("Verification_Date")}
                     />
                   </div>
                 </FormColumn>
@@ -410,9 +418,9 @@ export default function MakerInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name="verification_Date"
+                      name="Verification_Date"
                       showTime={true}
-                      focusOptions={() => method.setFocus("verified_By_UserId")}
+                      focusOptions={() => method.setFocus("Verified_By_UserId")}
                     />
                   </div>
                 </FormColumn>
@@ -421,7 +429,7 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"verified_By_UserId"}
+                      name={"Verified_By_UserId"}
                       focusOptions={() => method.setFocus("BankName")}
                     />
                   </div>
@@ -431,8 +439,7 @@ export default function MakerInformation() {
                   <div>
                     <DatePickerField
                       control={method.control}
-                      name="EntityCreationDate"
-                      focusOptions={() => method.setFocus("total_Approved_No")}
+                      name="Entity_Creation_Date"
                     />
                   </div>
                 </FormColumn>
@@ -450,8 +457,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Approved_No"}
-                      focusOptions={() => method.setFocus("total_Declined_No")}
+                      name={"Total_Approved_No"}
+                      focusOptions={() => method.setFocus("Total_Declined_No")}
                     />
                   </div>
                 </FormColumn>
@@ -460,8 +467,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Declined_No"}
-                      focusOptions={() => method.setFocus("total_Returned_No")}
+                      name={"Total_Declined_No"}
+                      focusOptions={() => method.setFocus("Total_Returned_No")}
                     />
                   </div>
                 </FormColumn>
@@ -470,9 +477,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Returned_No"}
+                      name={"Total_Returned_No"}
                       focusOptions={() =>
-                        method.setFocus("total_Returned_By_Store_No")
+                        method.setFocus("Total_Returned_By_Store_No")
                       }
                     />
                   </div>
@@ -482,8 +489,8 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Returned_By_Store_No"}
-                      focusOptions={() => method.setFocus("total_Resolved_No")}
+                      name={"Total_Returned_By_Store_No"}
+                      focusOptions={() => method.setFocus("Total_Resolved_No")}
                     />
                   </div>
                 </FormColumn>
@@ -492,9 +499,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Resolved_No"}
+                      name={"Total_Resolved_No"}
                       focusOptions={() =>
-                        method.setFocus("total_Approved_Amount")
+                        method.setFocus("Total_Approved_Amount")
                       }
                     />
                   </div>
@@ -508,9 +515,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Approved_Amount"}
+                      name={"Total_Approved_Amount"}
                       focusOptions={() =>
-                        method.setFocus("total_Declined_Amount")
+                        method.setFocus("Total_Declined_Amount")
                       }
                     />
                   </div>
@@ -519,9 +526,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Declined_Amount"}
+                      name={"Total_Declined_Amount"}
                       focusOptions={() =>
-                        method.setFocus("total_Returned_Amount")
+                        method.setFocus("Total_Returned_Amount")
                       }
                     />
                   </div>
@@ -530,9 +537,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Returned_Amount"}
+                      name={"Total_Returned_Amount"}
                       focusOptions={() =>
-                        method.setFocus("total_Returned_By_Store_Amount")
+                        method.setFocus("Total_Returned_By_Store_Amount")
                       }
                     />
                   </div>
@@ -541,9 +548,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Returned_By_Store_Amount"}
+                      name={"Total_Returned_By_Store_Amount"}
                       focusOptions={() =>
-                        method.setFocus("total_Resolved_Amount")
+                        method.setFocus("Total_Resolved_Amount")
                       }
                     />
                   </div>
@@ -552,9 +559,9 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"total_Resolved_Amount"}
+                      name={"Total_Resolved_Amount"}
                       focusOptions={() =>
-                        method.setFocus("total_Resolved_Amount")
+                        method.setFocus("Total_Resolved_Amount")
                       }
                     />
                   </div>
@@ -637,7 +644,7 @@ export default function MakerInformation() {
                   <div>
                     <TextAreaField
                       control={method.control}
-                      name={"BankName"}
+                      name={"Pending_Reason"}
                       rows={4}
                     />
                   </div>
@@ -656,7 +663,7 @@ export default function MakerInformation() {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"BankName"}
+                      name={"Pending_Decline_Reasons"}
                     />
                   </div>
                 </FormColumn>

@@ -22,6 +22,7 @@ import { Check_Transaction_data } from "../../api/CheckTransactionApi"
 import { useQuery } from "@tanstack/react-query"
 import { QUERY_KEY } from "../../utils/enums"
 import { useAuthProvider } from "../../context/AuthContext"
+import { CustomSpinner } from "../../components/CustomSpinner"
 
 const FORMS_KEYS = [
   "transactioninfo",
@@ -85,22 +86,42 @@ const CheckTransaction = () => {
   function showSection() {
     switch (tab) {
       case FORMS_KEYS[0]:
-        console.log(data.transactiondata, "rendered")
         return (
           <>
             {data.transactiondata ? (
-              <TransactionInformation transactiondata={data?.transactiondata} />
+              <TransactionInformation transactiondata={data.transactiondata} />
             ) : null}
           </>
         )
       case FORMS_KEYS[1]:
-        return <CustomerInformation />
+        return (
+          <>
+            {data.customerdata ? (
+              <CustomerInformation
+                customerInformationData={data.customerdata}
+                customerImagesData={data.imagephotodata}
+                customerIdCardsImagesData={data.imageidcarddata}
+              />
+            ) : null}
+          </>
+        )
       case FORMS_KEYS[2]:
-        return <MakerInformation />
+        return <MakerInformation makerInformationData={data?.makerdata} />
       case FORMS_KEYS[3]:
         return <ReturnedChecks />
-      default:
-        return <TransactionInformation />
+    }
+  }
+
+  function getLoadingMessage() {
+    switch (tab) {
+      case FORMS_KEYS[0]:
+        return "Loading transaction information..."
+      case FORMS_KEYS[1]:
+        return "Loading customer information..."
+      case FORMS_KEYS[2]:
+        return "Loading maker information..."
+      case FORMS_KEYS[3]:
+        return "Loading returned checks..."
     }
   }
 
@@ -120,7 +141,9 @@ const CheckTransaction = () => {
         }}
       />
       {isLoading || isFetching ? (
-        <h1>Loading</h1>
+        <div className="flex items-center justify-center h-[80vh] w-full">
+          <CustomSpinner message={getLoadingMessage()} />
+        </div>
       ) : (
         <div className="">{data ? showSection() : null}</div>
       )}
@@ -155,6 +178,7 @@ function TransactionInformation({ transactiondata }) {
       Guarantee: transactiondata?.Guarantee,
       Pending_Reason: transactiondata?.Pending_Reason,
       Transaction_Notes: transactiondata?.Transaction_Notes,
+      Pending_Decline_Reasons: transactiondata?.Pending_Decline_Reasons,
     },
   })
   const shadow = "bg-white mb-3 rounded-xl"
@@ -350,8 +374,8 @@ function TransactionInformation({ transactiondata }) {
                   <div>
                     <TextInputField
                       control={method.control}
-                      name={"Loyalty_Card_Fee"}
-                      focusOptions={() => method.setFocus("TransactionFee")}
+                      name={"Check_Type"}
+                      focusOptions={() => method.setFocus("Check_Date")}
                     />
                   </div>
                 </FormColumn>
@@ -447,14 +471,14 @@ function TransactionInformation({ transactiondata }) {
           <div className="col-span-12 lg:col-span-5 xl:col-span-5">
             <div className={`p-2  ${shadow}`}>
               <FormRow>
-                <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
+                <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12 min-h-[10rem]">
                   <Image preview src="" />
                 </FormColumn>
               </FormRow>
             </div>
             <div className={`p-2  ${shadow}`}>
               <FormRow>
-                <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12">
+                <FormColumn className="col-span-12 lg:col-span-12 xl:col-span-12 md:col-span-12 min-h-[10rem]">
                   <FormLabel></FormLabel>
                   <Image preview src="" />
                 </FormColumn>
@@ -467,7 +491,7 @@ function TransactionInformation({ transactiondata }) {
                   <div>
                     <TextAreaField
                       control={method.control}
-                      name={"Loyalty_Card_Fee"}
+                      name={"Pending_Decline_Reasons"}
                       rows={6}
                       readonly={true}
                     />

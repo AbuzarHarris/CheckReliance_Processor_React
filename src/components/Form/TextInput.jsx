@@ -21,6 +21,7 @@ function TextInput({
     padding: "0rem 0.3rem",
     fontSize: "1.0em",
     borderRadius: "5px",
+    fontWeight: "500",
   },
   rootClassName = "",
   ...props

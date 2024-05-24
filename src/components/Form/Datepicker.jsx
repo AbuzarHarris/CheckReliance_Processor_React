@@ -39,6 +39,7 @@ const DatePicker = ({
                     width: "100%",
                     padding: "0.1rem 0.4rem",
                     fontSize: ".9em",
+                    fontWeight: "500",
                   },
                 },
               },

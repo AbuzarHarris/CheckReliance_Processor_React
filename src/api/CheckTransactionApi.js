@@ -86,12 +86,19 @@ export async function Check_Transaction_data({ UserId, TransactionID }) {
     transactiondata,
     commercialcustomerdata,
     customercheckdata,
-    makerdata,
+    makerdata: {
+      ...makerdata,
+      Account_Status: customerdata?.Account_Status,
+      Account_Status_Reason: customerdata?.Account_Status_Reason,
+      Pending_Decline_Reasons: transactiondata?.Pending_Decline_Reasons,
+      Pending_Reason: transactiondata?.Pending_Reason,
+    },
     makernotesdata,
     imagephotodata,
     imageidcarddata,
     imagecheckdata,
     storedata,
+    customerdata: customerdata,
   }
   return dataaa
 }
